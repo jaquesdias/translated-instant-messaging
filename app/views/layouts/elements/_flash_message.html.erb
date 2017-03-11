@@ -1,0 +1,19 @@
+<div id="notifications">
+  <% flash.each do |name, message| %>
+    <div class="alert fade in alert-<%= name == "notice" ? "success" : "danger" %>">
+      <button data-dismiss="alert" class="close close-sm" type="button">
+        <i class="fa fa-times"></i>
+      </button>
+
+      <% if message.is_a?(Array) %>
+        <ul>
+          <% message.each do |single_message| %>
+            <li><%= single_message %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= message %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
