@@ -1,22 +1,23 @@
 <div class="row">
   <div class="col-lg-8">
     <h4>Chat messages</h4>
-    <div class="card">
-      <div class="card-block">
-        <div class="row">
-          <div class="col-md-1">
-            <img alt="tczf1128" src="https://www.gravatar.com/avatar/cdb20ef4aeef6275bad8c3a370a7f816?s=40">
-          </div>
-          <div class="col-md-11">
-            <p class="card-text">
-              <span class="text-muted">Ronaldo at 14:32:05 16 June 2016 says</span><br>
-              hi
-            </p>
+    <% @messages.each do |message| %>
+      <div class="card">
+        <div class="card-block">
+          <div class="row">
+            <div class="col-md-1">
+              <%= image_tag(message.dialect_type, width: "40", height: "40") %>
+            </div>
+            <div class="col-md-11">
+              <p class="card-text">
+                <span class="text-muted"><b><%= message.author %></b> at <b><%= l message.created_at, format: :long %></b> says</span><br>
+                <%= message.description %>
+              </p>
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
+    <% end %>
   </div>
   <div class="col-lg-4">
     <h4>Active users</h4>

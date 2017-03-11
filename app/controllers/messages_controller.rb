@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :check_current_user
+  before_action :get_messages, only: [:index, :create]
 
   def new; end
 
@@ -20,5 +21,9 @@ class MessagesController < ApplicationController
   def message_params
     user = session[:current_user]
     { description: params[:message][:description], author: user["username"], dialect_type: user["dialect"] }
+  end
+
+  def get_messages
+    @messages = Message.all
   end
 end
