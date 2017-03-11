@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :messages
+
+  get '/active_users', to: "users#active_users", as: :active_users
 end

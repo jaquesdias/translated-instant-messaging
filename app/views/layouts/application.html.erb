@@ -15,14 +15,6 @@
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Translated Instant Messaging</a>
         </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li>
-
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container">
@@ -34,5 +26,8 @@
         <%= yield %>
       </div>
     </div>
+    <%= javascript_include_tag "application" %>
+
+    <%= yield :javascript %>
   </body>
 </html>
