@@ -20,7 +20,9 @@ class MessagesController < ApplicationController
   private
   def message_params
     user = session[:current_user]
-    { description: params[:message][:description], author: user["username"], dialect_type: user["dialect"] }
+    message = params[:message][:description]
+    translated_message = Translation.new(user["dialect"]).translate(message)
+    { description: translated_message, author: user["username"], dialect_type: user["dialect"] }
   end
 
   def get_messages
