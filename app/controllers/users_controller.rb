@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   private
   def sessions_register
     session[:current_user] = { username: params[:username], dialect: params[:dialect] }
-    session[:active_users] = []
+    session[:active_users] = session[:active_users].any? ? session[:active_users] : []
     session[:active_users] << { username: params[:username], dialect: params[:dialect] }
   end
 end
